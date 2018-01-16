@@ -1,8 +1,5 @@
 #include <Misc.au3>
 #include <ImageSearch.au3>
-#include <FileConstants.au3>
-#include <MsgBoxConstants.au3>
-#include <Date.au3>
 
 HotKeySet("{PAUSE}", "TogglePause")
 HotKeySet("{z}", "Start")
@@ -173,7 +170,7 @@ While (1)
 	EndIf
 	
 	if $timerr == 1 Then
-		$length = InputBox("HOW LONG TO RUN", "How many minutes to run? *TOOLBELT ORDER*, 2=scissors, 3=needle, 4=cloth, 5=water *BIND* I Improve/Finish and R repair *Z Starts*", 30)
+		$length = InputBox("HOW LONG TO RUN", "How many minutes to run? *TOOLBELT ORDER*, 1=Needle, 2=Mallet, 3=Awl, 4=Knife, 5=Leather *BIND* I Improve/Finish and R repair *Z Starts*", 30)
 		$lengthms = $length * 60 * 1000
 		global $timer = TimerInit()	
 			$timerr = 0
@@ -192,10 +189,6 @@ While (1)
 	EndIf
 	
 	if $running == 1 Then
-		
-		Local $hFilehandle = FileOpen(@ScriptDir & "\log.txt", $FO_OVERWRITE)
-		FileWrite($hFilehandle, _NowDate() & " " & _NowTime())
-		FileClose($hFilehandle)
 		
 		Local $needle = 1
 		While $needle = 1
